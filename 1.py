@@ -17,32 +17,34 @@ def load_level(file):
             map.append(line.strip())
     return map
 
-map = load_level('1lvl.txt')
 
-def print_map(map, x, y):
-
-    word = map[y]
-    index = x
+def print_map(map, hero_x, hero_y):
+    word = map[hero_y]
+    index = hero_x
     word = word[:index] + "@" + word[index + 1:]
-    map[y] = word
-
+    map[hero_y] = word
     print(chr(27) + "[2J")
     for line in map:
         print ("".join(line))
 
-print_map(map,0,0)
-x_position = 0
-y_position = 0
-while True:
-    print_map(map,x_position,y_position)
-    x = getch()
-    if x == "q":
-        break
-    if x == "a":
-        x_position -= 1
-    if x == "d":
-        x_position += 1
-    if x == "w":
-        y_position -= 1
-    if x == "s":
-        y_position += 1
+   
+def moving(x_position,y_position):
+    map = load_level('1lvl.txt')
+    print_map(map, x_position, y_position)
+    while True:
+        map = load_level('1lvl.txt')
+        print_map(map, x_position, y_position)
+        x = getch()
+        if x == "q":
+            break
+        if x == "a" and map[y_position][x_position-1] != "#":
+            x_position -= 1
+        if x == "d" and map[y_position][x_position+1] != "#":
+            x_position += 1
+        if x == "w" and map[y_position-1][x_position] != "#":
+            y_position -= 1
+        if x == "s" and map[y_position+1][x_position] != "#":
+            y_position += 1
+
+
+moving(2,2)

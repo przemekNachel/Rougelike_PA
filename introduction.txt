@@ -1,0 +1,23 @@
+You're a man who was exiled into some kind of magical dome. Someone comes to you and
+introduces you to the world inside dome. His name is Diego and he tells you that if 
+you want to leave this place you need to kill the Big Monster.
+There are a lot of monsters around and you don't have even a proper weapon, 
+and what's worse that guy disappeared. You need to survive and leave the dome or die inside.
+So you decide to find this monster and leave the dome.
+
+
+
+                                 |--__
+                                 |
+                                 X
+                        |-___   / \       |--__
+                        |      =====      |
+                        X      | .:|      X
+                       / \     | O |     / \
+                      =====   |:  . |   =====
+                      |.: |__| .   : |__| :.|
+                      |  :|. :  ...   : |.  |
+              __   __W| .    .  ||| .      :|W__  --
+            -- __  W  WWWW______"""______WWWW   W -----  --
+        -  -     ___  ---    ____     ____----       --__  -
+            --__    --    --__     -___        __-   _

@@ -27,11 +27,11 @@ def print_map(map, data):
     covered_map = list(map)
     if data["guardians"][0]:
         i=2
-        for line in range(0,len(data["guardians"][1])- 2):
-            word = str(map[data["guardians"][1][0]+line])
-            index = data["guardians"][1][1]
-            word = word[:index] + str(data["guardians"][1][i]) + word[index + len(data["guardians"][1][i]):]
-            covered_map[line + data["guardians"][1][0]] = word
+        for line in range(0,len(data["guardians"][data["current_location"]])- 2):
+            word = str(map[data["guardians"][data["current_location"]][0]+line])
+            index = data["guardians"][data["current_location"]][1]
+            word = word[:index] + str(data["guardians"][data["current_location"]][i]) + word[index + len(data["guardians"][data["current_location"]][i]):]
+            covered_map[line + data["guardians"][data["current_location"]][0]] = word
             i+=1 
     covered_map[data["hero_position"][1]] = (
         str(covered_map[data["hero_position"][1]][:data["hero_position"][0]]) +
@@ -69,14 +69,8 @@ def movement(pressed_key, data, map, covered_map):
 
 
 def game():
-    data = {
-        "levels": ["1lvl.txt", "2lvl.txt"], 
-        "current_location": 0, 
-        "hero_position": [12,36],
-        "grass_steps_remaining": [15,0], 
-        "guardians": [[1], [29, 24, "`oo.'", "`-')  ,.", " ( `-'/^`", " -`_-)"], []],
-        "attack": 100
-        }
+    with open('game.sav','r') as inf:
+        data = eval(inf.read())
 
     print(data)
     map = load_level(data["levels"][data["current_location"]])
@@ -88,6 +82,8 @@ def game():
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
             fight.game_fight()
+        if data["guardians"][1][0] <= data["hero_position"][0] <= data["guardians"][1][0] + len(data["guardians"][1]) - 2:
+            print("s")
         movement(pressed_key, data, map, covered_map)
     
 game()

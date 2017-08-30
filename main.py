@@ -73,11 +73,8 @@ def handle_with_objects(hero_position, space_to_move, covered_map, objects, map,
     if object_under_hero == ".":
         walking_on_grass(grass_steps, stats["monster_level"])
 
-def battle_with_mob(level, input):
-    print(chr(27) + "[2J")
-    print(level)
-    time.sleep(1)
-    print("bla")
+
+    
 
 
     

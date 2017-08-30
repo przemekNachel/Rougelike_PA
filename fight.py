@@ -14,10 +14,11 @@ def print_screen(map,data):
     covered_screen = list(map)
     print(chr(27) + "[2J")
     for key in data:
-        covered_screen[data.get(key)[1]] = (covered_screen[data.get(key)[1]][:data.get(key)[2]] + 
-                                           str(data.get(key)[0]) + 
-                                           covered_screen[data.get(key)[1]][data.get(key)[2] + 
-                                           len(str(data.get(key)[0])):])
+        if key != "enemy_exp":
+            covered_screen[data.get(key)[1]] = (covered_screen[data.get(key)[1]][:data.get(key)[2]] + 
+                                            str(data.get(key)[0]) + 
+                                            covered_screen[data.get(key)[1]][data.get(key)[2] + 
+                                            len(str(data.get(key)[0])):])
     for line in covered_screen:
         print("".join(line))
     print("\n\n")
@@ -51,15 +52,15 @@ def main():
         "hero_attack": [50,5,18], 
         "hero_defense": [30,6,18], 
         "hero_dexterity": [15, 7, 18], 
-        "hero_exp": [0,8,18], 
-        "hero_message": ["",10,50], 
-        "enemy_name": ["Ork",3,129], 
-        "enemy_HP": [100,4,129], 
-        "enemy_attack": [60,5,129], 
-        "enemy_defense": [30,6,129], 
-        "enemy_dexterity": [15, 7, 129],
-        "enemy_exp": [20,8,129], 
-        "enemy_message": ["",10,50], 
+        "hero_exp": [0,9,18], 
+        "hero_message": ["",6,45], 
+        "enemy_name": ["Ork",3,150], 
+        "enemy_HP": [100,4,150], 
+        "enemy_attack": [60,5,150], 
+        "enemy_defense": [30,6,150], 
+        "enemy_dexterity": [15, 7, 150],
+        "enemy_exp": [20,8,150], 
+        "enemy_message": ["",5,50], 
             }
     hero_position = [0,0]
     fight(data, background)

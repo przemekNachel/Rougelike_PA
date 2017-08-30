@@ -2,6 +2,7 @@ import os
 import time
 import random
 import fight
+import guardian
 
 
 def getch():
@@ -51,7 +52,9 @@ def movement(pressed_key, data, map, covered_map):
     object_at_bottom = covered_map[data["hero_position"][1]+1][data["hero_position"][0]]
     object_under_hero = map[data["hero_position"][1]][data["hero_position"][0]]    
     obstacles = ["#", "^", "░", "▒", "▓"]
-    
+ #   if object_at_top in data["guardians"][data["current_location"]][-1]:
+    if object_at_top == "_":
+        return 1      
     if pressed_key == "a" and object_at_left not in obstacles:
         data["hero_position"][0] -= 1
     if pressed_key == "d" and object_at_right not in obstacles:
@@ -59,7 +62,7 @@ def movement(pressed_key, data, map, covered_map):
     if pressed_key == "w" and object_at_top not in obstacles:
         data["hero_position"][1] -= 1
     if pressed_key == "s" and object_at_bottom not in obstacles:
-        data["hero_position"][1] += 1
+        data["hero_position"][1] += 1  
     if object_under_hero == ",":
         if data["grass_steps_remaining"][0]:
             data["grass_steps_remaining"][0] -= 1
@@ -71,19 +74,20 @@ def movement(pressed_key, data, map, covered_map):
 def game():
     with open('game.sav','r') as inf:
         data = eval(inf.read())
-
-    print(data)
     map = load_level(data["levels"][data["current_location"]])
-    while True:       
+    while True:         
         covered_map = print_map(map, data)
         pressed_key = getch()
+        guardian_over = movement(pressed_key, data, map, covered_map)
+        if guardian_over:
+            print("JUZ")
+            data["guardians"][0] = 0
+            guardian.fight_with_guardian([data["current_location"]])            
         if pressed_key == "q":
             break
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
             fight.game_fight()
-        if data["guardians"][1][0] <= data["hero_position"][0] <= data["guardians"][1][0] + len(data["guardians"][1]) - 2:
-            print("s")
-        movement(pressed_key, data, map, covered_map)
-    
+          
+ 
 game()

@@ -42,10 +42,12 @@ def print_about_us():
 def main():
     print_mainmenu()
     while True:
+
         try:
             user_input = int(input())
         except:
             print_mainmenu()
+
         if user_input == 1:
             pass
         elif user_input == 2:
@@ -61,4 +63,5 @@ def main():
             quit()
         else:
             continue
+
 main()

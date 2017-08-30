@@ -1,6 +1,7 @@
 import time
 import random
 
+
 def getch():
     import sys, tty, termios
     fd = sys.stdin.fileno()
@@ -12,6 +13,7 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
+
 def load_level(file):
     map = []
     with open(file) as inputfile:
@@ -19,9 +21,10 @@ def load_level(file):
             map.append(line.strip())
     return map
 
+
 def print_map(map):
     for line in map:
-        print ("".join(line))
+        print("".join(line))
     print("\n\n")
 
 
@@ -33,13 +36,14 @@ def insert_objects_to_map(hero_position, map):
         str(map[hero_position[1]][hero_position[0] + 1:]))
     print(chr(27) + "[2J")
     for line in covered_map:
-        print ("".join(line))
+        print("".join(line))
     print("\n\n")
     return covered_map
 
+
 def print_guardian(map, guardian):
     i=2
-    for line in range(0,len(guardians_data[guardian]) - 2):
+    for line in range(0, len(guardians_data[guardian]) - 2):
         word = map[guardians_data[guardian][0]+line]
         index = guardians_data[guardian][1]
         word = word[:index] + guardians_data[guardian][i] + word[index + len(guardians_data[guardian][i]):]
@@ -47,6 +51,7 @@ def print_guardian(map, guardian):
         i+=1 
     for line in map:
         print ("".join(line))
+
 
 def walking_on_grass(grass_steps_to_meet, monster_level):
     grass_steps_to_meet[1] += 1
@@ -74,12 +79,6 @@ def handle_with_objects(hero_position, space_to_move, covered_map, objects, map,
         walking_on_grass(grass_steps, stats["monster_level"])
 
 
-    
-
-
-    
-
-
 def moving(pressed_key, position, space_to_move):
         if pressed_key[0] == "a" and space_to_move["left"]:
             position[0] -= 1            
@@ -90,12 +89,13 @@ def moving(pressed_key, position, space_to_move):
         if pressed_key[0] == "s" and space_to_move["down"]:
             position[1] += 1
 
+
 def main():
     map = list(load_level('1lvl.txt'))
     guardians_data = [[29, 24, "`oo.'", "`-')  ,.", " ( `-'/^`", " -`_-)"], []]
     
-    objects = {"obstacles":["#", "^", "░", "▒", "▓"]}
-    stats = {"hp":100, "atk":20, "def":20, "monster_level":1}
+    objects = {"obstacles": ["#", "^", "░", "▒", "▓"]}
+    stats = {"hp": 100, "atk": 20, "def": 20, "monster_level": 1}
     position = [12,36]
     grass_steps_to_meet = [random.randint(5,13), 0, 0]
 

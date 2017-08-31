@@ -88,14 +88,9 @@ def check_hero_level(data):
     if data["hero_exp"][0] >= (data["hero_level"][0] * 100):
         data["hero_exp"][0] -= (data["hero_level"][0] * 100)
         data["hero_level"][0] += 1
-<<<<<<< HEAD
-        data["remaining_points"][0] += 10
-    else:
-=======
         data["lvlmessage"] = 1
         data["remaining_points"][0] += 10 
     else: 
->>>>>>> 10ece3f26b6eaabddbfec0a35fefdcceaec532ad
         pass
     return data
 
@@ -195,11 +190,8 @@ def game(data):
             inventory.inventory(data)
             pressed_key = getch()
         if pressed_key == "c":
-<<<<<<< HEAD
-=======
             if data["lvlmessage"] == 1:
                 data["lvlmessage"] = 0
->>>>>>> 10ece3f26b6eaabddbfec0a35fefdcceaec532ad
             character_sheet(data)
             pressed_key = getch()
         print(data["hero_position"])
@@ -211,4 +203,7 @@ def game(data):
             data["grass_steps_remaining"][1] = 0
             check_enemy(data)
             fight.game_fight(data)
+            if data["hero_HP"][0] <= 0:
+                data["totaltime"] = (time.time() - data["starttime"])
+
             check_hero_level(data)

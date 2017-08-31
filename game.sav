@@ -3,12 +3,12 @@
 "current_location":1,
 "hero_position":[12,36],
 "grass_steps_remaining":[15,0],
-"guardians":[[1],
+"guardians":[[1], 
 [20, 32,
-"`oo.'",
-"`-')  ,.",
-" ( `-'/^`",
-"_-`_-)"],
+"`oo.'", 
+"`-')  ,.", 
+" ( `-'/^`", 
+"_-`_-)"], 
 []],
 "hero_name": ["Ja", 3, 18],
 "hero_HP": [100, 4, 18],
@@ -24,5 +24,6 @@
 "enemy_dexterity": [15, 7, 150],
 "enemy_exp": [20, 8, 150],
 "enemy_message": ["", 6, 100],
-"except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining"],
+"except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining"]
 }
+

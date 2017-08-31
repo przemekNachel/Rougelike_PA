@@ -45,6 +45,8 @@ def fight(data, background):
             if damage < 0:
                 damage = 0
             data["enemy_HP"][0] -= damage
+            if data["enemy_HP"][0] < 0:
+                data["enemy_HP"][0] = 0
             data["hero_message"][0] = "You attacked for "+str(damage)+" damage."
         elif data["hero_HP"][0] > 0 and hit_check > hit_chance_hero:
             data["hero_message"][0] = "You missed"
@@ -56,8 +58,10 @@ def fight(data, background):
         if data["enemy_HP"][0] > 0 and hit_check <= hit_chance_enemy:
             damage = (data.get("enemy_attack")[0]-data.get("hero_defense")[0])
             if damage < 0:
-                damage = 0
+                damage = 0   
             data["hero_HP"][0] -= damage
+            if data["hero_HP"][0] < 0:
+                data["hero_HP"][0] = 0
             data["enemy_message"][0] = data["enemy_name"][0] + " attacked you for "+str(damage)+" damage."
         elif data["enemy_HP"][0] > 0 and hit_check > hit_chance_enemy:
             data["enemy_message"][0] = data["enemy_name"][0] + " missed."
@@ -67,7 +71,7 @@ def fight(data, background):
 
 
 def game_fight(data):
-
+    data["enemy_HP"][0] = 100
     background = load_level("battle_screen.txt")
     fight(data, background)
     return data

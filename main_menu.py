@@ -62,11 +62,11 @@ def character_creation():
     1. Dexterity {}:
     2. Attack {}:
     3. Defense: {}""".format(name, remaining_points, dexterity, attack, defense))
-    data["hero_name"] = name
-    data["hero_HP"] = 100
-    data["hero_attack"] = attack
-    data["hero_defense"] = defense
-    data["hero_dexterity"] = dexterity
+    data["hero_name"][0] = name
+    data["hero_HP"][0] = 100
+    data["hero_attack"][0] = attack
+    data["hero_defense"][0] = defense
+    data["hero_dexterity"][0] = dexterity
     print(data)
     time.sleep(2)
     return data

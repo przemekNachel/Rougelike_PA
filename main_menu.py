@@ -80,6 +80,7 @@ def play():
             if user_play == 1:
                 data = character_creation()
                 print_from_file_with_input("introduction.txt")
+                data["starttime"] = time.time()
                 game.game(data)
             elif user_play == 2:
                 print_from_file("mainmenu_ascii.txt")

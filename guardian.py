@@ -93,6 +93,3 @@ def fight_with_guardian(data):
             break
         user_guesses -= 1
 
-
-if __name__ == '__fight_with_guardian__':
-    fight_with_guardian()

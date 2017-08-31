@@ -84,5 +84,3 @@ def game_fight(data):
     return data
 
 
-if __name__ == '__game_fight__':
-    game_fight(data)

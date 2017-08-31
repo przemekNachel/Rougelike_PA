@@ -1,3 +1,6 @@
+import os
+
+
 def length_of_longest_key(inventory):
     longest = "a"
     inv = inventory.keys()
@@ -15,8 +18,9 @@ def length_of_longest(inventory, counter):
     return len(longest)
 
 
-def inventory():
-    inv = {'shirt': [0, 1, "cloth", 70], 'sword': [0, 1, "weapon", 100], 'gold coin': [1, 42, "gold", 100]}
+def inventory(data):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    inv = data["inventory"]
     l = length_of_longest_key(inv)
     w = length_of_longest(inv, 3)
     it = length_of_longest(inv, 2)
@@ -33,4 +37,3 @@ def inventory():
             item_type = str(inv[i][2])
             print("{} {} {} {}".format(item.rjust(l, " "), count.rjust(9, " "), weight.rjust(w + 3, " "), item_type.rjust(it + 3, " ")))
 
-inventory()

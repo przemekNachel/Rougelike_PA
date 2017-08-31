@@ -34,7 +34,7 @@ def print_map(map, data):
             index = data["guardians"][data["current_location"]][1]
             word = word[:index] + str(data["guardians"][data["current_location"]][i]) + word[index + len(data["guardians"][data["current_location"]][i]):]
             covered_map[line + data["guardians"][data["current_location"]][0]] = word
-            i + =1
+            i += 1
     covered_map[data["hero_position"][1]] = (
         str(covered_map[data["hero_position"][1]][:data["hero_position"][0]]) +
         "@" +
@@ -52,10 +52,8 @@ def movement(pressed_key, data, map, covered_map):
     object_at_right = covered_map[data["hero_position"][1]][data["hero_position"][0]+1]
     object_at_top = covered_map[data["hero_position"][1]-1][data["hero_position"][0]]
     object_at_bottom = covered_map[data["hero_position"][1]+1][data["hero_position"][0]]
-    object_under_hero = map[data["hero_position"][1]][data["hero_position"][0]]
     obstacles = ["#", "^", "░", "▒", "▓"]
-#  if object_at_top in data["guardians"][data["current_location"]][-1]:
-    if object_at_top == "_":
+    if object_at_top in data["guardians"][data["current_location"]][-1]:
         return 1
     if pressed_key == "a" and object_at_left not in obstacles:
         data["hero_position"][0] -= 1
@@ -65,6 +63,7 @@ def movement(pressed_key, data, map, covered_map):
         data["hero_position"][1] -= 1
     if pressed_key == "s" and object_at_bottom not in obstacles:
         data["hero_position"][1] += 1
+    object_under_hero = map[data["hero_position"][1]][data["hero_position"][0]]
     if object_under_hero == ",":
         if data["grass_steps_remaining"][0]:
             data["grass_steps_remaining"][0] -= 1
@@ -73,24 +72,21 @@ def movement(pressed_key, data, map, covered_map):
             data["grass_steps_remaining"][1] = 1
 
 
-def game():
-    with open('game.sav', 'r') as inf:
-        data = eval(inf.read())
+def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
         covered_map = print_map(map, data)
-        print(data["grass_steps_remaining"][0])
         pressed_key = getch()
         guardian_over = movement(pressed_key, data, map, covered_map)
         if guardian_over:
-            print("JUZ")
             data["guardians"][0] = 0
             guardian.fight_with_guardian([data["current_location"]])
         if pressed_key == "q":
             break
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
-            fight.game_fight()
+            fight.game_fight(data)
           
  
-game()
+if __name__ == '__game__':
+    game(data)

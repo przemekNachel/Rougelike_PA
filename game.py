@@ -3,6 +3,7 @@ import time
 import random
 import fight
 import guardian
+import inventory
 
 
 def getch():
@@ -76,7 +77,7 @@ def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
         covered_map = print_map(map, data)
-        print(data)
+#        print(data)
         pressed_key = getch()
         guardian_over = movement(pressed_key, data, map, covered_map)
         if guardian_over:
@@ -84,6 +85,9 @@ def game(data):
             guardian.fight_with_guardian([data["current_location"]])
         if pressed_key == "q":
             break
+        if pressed_key == "i":
+            inventory.inventory(data)
+            pressed_key = getch()        
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
             fight.game_fight(data)

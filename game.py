@@ -138,7 +138,23 @@ def character_sheet(data):
     data["hero_dexterity"][0] = dexterity
     data["remaining_points"][0] = remaining_points
     return data
-
+            
+            
+def check_enemy(data):
+    enemieslvl1 = data["enemies1"]
+    enemieslvl2 = data["enemies2"]
+    if data["current_location"] == 1:
+        current_enemy = random.choice(enemieslvl1)
+    else:
+        current_enemy = random.choice(enemieslvl2)       
+    print(current_enemy)
+    data["enemy_name"][0] = current_enemy[0]
+    data["enemy_HP"][0] = current_enemy[1]
+    data["enemy_attack"][0] = current_enemy[2]
+    data["enemy_defense"][0] = current_enemy[3]
+    data["enemy_dexterity"][0] = current_enemy[4]
+    data["enemy_exp"][0] = current_enemy[5]
+    data["enemy_gold"][0] = current_enemy[6]
 
 def game(data):
     map = load_level(data["levels"][data["current_location"]])
@@ -166,6 +182,7 @@ def game(data):
             game(data)     
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
+            check_enemy(data)
             fight.game_fight(data)
             check_hero_level(data)
           

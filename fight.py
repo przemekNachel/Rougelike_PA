@@ -79,7 +79,6 @@ def fight(data, background):
 
 
 def game_fight(data):
-    data["enemy_HP"][0] = 100
     background = load_level("battle_screen.txt")
     fight(data, background)
     return data

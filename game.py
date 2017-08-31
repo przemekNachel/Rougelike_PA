@@ -87,6 +87,7 @@ def check_hero_level(data):
     if data["hero_exp"][0] >= (data["hero_level"][0] * 100):
         data["hero_exp"][0] -= (data["hero_level"][0] * 100)
         data["hero_level"][0] += 1
+        data["lvlmessage"] = 1
         data["remaining_points"][0] += 10 
     else: 
         pass
@@ -160,7 +161,8 @@ def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
         covered_map = print_map(map, data)
-#        print(data)
+        if data["lvlmessage"] == 1:
+            print("You gained level. Press 'C' to upgrade statistics.")
         pressed_key = getch()
         guardian_over = movement(pressed_key, data, map, covered_map)
         if guardian_over:
@@ -172,7 +174,9 @@ def game(data):
         if pressed_key == "i":
             inventory.inventory(data)
             pressed_key = getch()
-        if pressed_key == "c": 
+        if pressed_key == "c":
+            if data["lvlmessage"] == 1:
+                data["lvlmessage"] = 0
             character_sheet(data)
             pressed_key = getch()   
         print(data["hero_position"])

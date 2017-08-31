@@ -10,6 +10,7 @@
 " ( `-'/^`", 
 "_-`_-)"], 
 []],
+"remaining_points" : [20],
 "hero_name": ["Ja", 3, 18],
 "hero_HP": [100, 4, 18],
 "hero_attack": [100, 5, 18],
@@ -24,6 +25,6 @@
 "enemy_dexterity": [15, 7, 150],
 "enemy_exp": [20, 8, 150],
 "enemy_message": ["", 6, 100],
-"except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining"]
+"except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining", "remaining_points"]
 }
 

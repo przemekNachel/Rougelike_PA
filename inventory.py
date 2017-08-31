@@ -1,20 +1,18 @@
 def length_of_longest_key(inventory):
-    print(inventory)
-    lngst = "a"
+    longest = "a"
     inv = inventory.keys()
     for it in inv:
-        if len(it) > len(lngst):
-            lngst = it
-    return len(lngst)
+        if len(it) > len(longest):
+            longest = it
+    return len(longest)
 
 
 def length_of_longest(inventory, counter):
-    print(inventory)
-    lngst = "a"
+    longest = "a"
     for it in inventory:
-        if len(it) > len(lngst):
-            lngst = it
-    return len(lngst)
+        if len(it) > len(longest):
+            longest = it
+    return len(longest)
 
 
 def inventory():

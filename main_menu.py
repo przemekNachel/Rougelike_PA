@@ -11,7 +11,7 @@ def print_from_file(filename):
 
 
 def print_from_file_with_input(filename):
-    if filename == "Highscore1.txt":
+    if filename == "highscore1.txt":
         pass
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -29,7 +29,7 @@ def character_creation():
     attack = data["hero_attack"][0]
     defense = data["hero_defense"][0]
     dexterity = data["hero_dexterity"][0]
-    remaining_points = 20
+    remaining_points = data["remaining_points"][0]
     name = input("Please enter name of your character: ")
     while remaining_points > 0:
         print_from_file("char_creation.txt")
@@ -67,6 +67,7 @@ def character_creation():
     data["hero_attack"][0] = attack
     data["hero_defense"][0] = defense
     data["hero_dexterity"][0] = dexterity
+    data["remaining_points"][0] = remaining_points
     print(data)
     time.sleep(2)
     return data
@@ -98,11 +99,11 @@ def main():
                 print_from_file("play.txt")
                 play()
             elif user_input == 2:
-                print_from_file("Highscore.txt")
-                print_from_file_with_input("Highscore1.txt")
+                print_from_file("highscore.txt")
+                print_from_file_with_input("highscore1.txt")
                 print_from_file("mainmenu_ascii.txt")
             elif user_input == 3:
-                print_from_file_with_input("How_to_play.txt")
+                print_from_file_with_input("how_to_play.txt")
                 print_from_file("mainmenu_ascii.txt")
             elif user_input == 4:
                 print_from_file_with_input("about_us_ascii.txt")

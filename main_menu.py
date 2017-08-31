@@ -11,7 +11,10 @@ def print_from_file(filename):
 
 
 def print_from_file_with_input(filename):
-    os.system('cls' if os.name == 'nt' else 'clear')
+    if filename == "Highscore1.txt":
+        pass
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
     with open(filename, "r") as file:
         print_screen = file.readlines()
         for line in print_screen:
@@ -23,9 +26,9 @@ def character_creation():
     print_from_file("char_creation.txt")
     with open('game.sav', 'r') as inf:
         data = eval(inf.read())
-    attack = 10
-    defense = 10
-    dexterity = 10
+    attack = data["hero_attack"][0]
+    defense = data["hero_defense"][0]
+    dexterity = data["hero_dexterity"][0]
     remaining_points = 20
     name = input("Please enter name of your character: ")
     while remaining_points > 0:
@@ -35,9 +38,9 @@ def character_creation():
 
     Your statistics:
     Remaining points: {}
-    1. Dexterity {}:
-    2. Attack {}:
-    3. Defense: {} \n\n""".format(name, remaining_points, dexterity, attack, defense))
+    1. Dexterity: {}
+    2. Attack   : {}
+    3. Defense  : {} \n\n""".format(name, remaining_points, dexterity, attack, defense))
         answer = input("Please enter number from one to three to change stat by five points: ")
         if answer == "1":
             dexterity += 5
@@ -95,7 +98,8 @@ def main():
                 print_from_file("play.txt")
                 play()
             elif user_input == 2:
-                print_from_file_with_input("Highscore.txt")
+                print_from_file("Highscore.txt")
+                print_from_file_with_input("Highscore1.txt")
                 print_from_file("mainmenu_ascii.txt")
             elif user_input == 3:
                 print_from_file_with_input("How_to_play.txt")

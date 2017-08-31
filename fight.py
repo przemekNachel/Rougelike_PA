@@ -16,7 +16,7 @@ def print_screen(map, data):
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\n\n")
     for key in data:
-        if key != "enemy_exp" and key != "enemy_loot":
+        if key not in data["except"]:
             covered_screen[data.get(key)[1]] = (covered_screen[data.get(key)[1]][:data.get(key)[2]] +
                                                 str(data.get(key)[0]) +
                                                 covered_screen[data.get(key)[1]][data.get(key)[2] +
@@ -42,6 +42,8 @@ def fight(data, background):
         hit_check = random.randint(0, 100)
         if data["hero_HP"][0] > 0 and hit_check <= hit_chance_hero:
             damage = (data.get("hero_attack")[0]-data.get("enemy_defense")[0])
+            if damage < 0:
+                damage = 0
             data["enemy_HP"][0] -= damage
             data["hero_message"][0] = "You attacked for "+str(damage)+" damage."
         elif data["hero_HP"][0] > 0 and hit_check > hit_chance_hero:
@@ -53,6 +55,8 @@ def fight(data, background):
         hit_check = random.randint(0, 100)
         if data["enemy_HP"][0] > 0 and hit_check <= hit_chance_enemy:
             damage = (data.get("enemy_attack")[0]-data.get("hero_defense")[0])
+            if damage < 0:
+                damage = 0
             data["hero_HP"][0] -= damage
             data["enemy_message"][0] = data["enemy_name"][0] + " attacked you for "+str(damage)+" damage."
         elif data["enemy_HP"][0] > 0 and hit_check > hit_chance_enemy:
@@ -62,28 +66,11 @@ def fight(data, background):
         data["enemy_message"][0] = ""
 
 
-def game_fight():
+def game_fight(data):
 
     background = load_level("battle_screen.txt")
-    data = {
-        "hero_name": ["Ja", 3, 18],
-        "hero_HP": [100, 4, 18],
-        "hero_attack": [100, 5, 18],
-        "hero_defense": [30, 6, 18],
-        "hero_dexterity": [15, 7, 18],
-        "hero_exp": [0, 9, 18],
-        "hero_message": ["", 6, 40],
-        "enemy_name": ["Orc", 3, 150],
-        "enemy_HP": [100, 4, 150],
-        "enemy_attack": [60, 5, 150],
-        "enemy_defense": [30, 6, 150],
-        "enemy_dexterity": [15, 7, 150],
-        "enemy_exp": [20, 8, 150],
-        "enemy_message": ["", 6, 100],
-        }
-    hero_position = [0, 0]
     fight(data, background)
-    return
+    return data
 
 if __name__ == '__game_fight__':
     game_fight()

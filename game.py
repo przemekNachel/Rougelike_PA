@@ -85,7 +85,7 @@ def game(data):
             break
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
-            fight.game_fight()
+            fight.game_fight(data)
           
  
 if __name__ == '__game__':

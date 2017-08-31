@@ -2,6 +2,7 @@ import os
 import game
 import random
 
+
 def generate_unique_number():
 
     unique_number_list = [0,1,2,3,4,5,6,7,8,9]
@@ -37,8 +38,45 @@ def compare_user_answer(guess, correct_answer):
     return hints
 
 
-def fight_with_guardian(level):
+def fight_with_guardian(data):
     os.system('cls' if os.name == 'nt' else 'clear')
+    if data["current_location"] == 1:    
+        print('\x1b[1;33;40m' + '''
+        
+                |\___/|
+                (,\  /,)\'
+                /     /  \'
+            (@_^_@)/   \'
+                W//W_/     \'
+            (//) |        \'
+            (/ /) _|_ /   )  \''
+        (// /) '/,_ _ _/  (~^-.
+        (( // )) ,-{        _    `.
+    (( /// ))  '/\      /      |
+    (( ///))     `.   {       }
+        ((/ ))    .----~-.\   \-'
+                ///.----..>   \'''
+                ///-._ _  _ _}''' + '\x1b[0m')
+    else:
+        print('\x1b[1;31;40m'+'''                                      
+             />\\//\\/>\                     /<\//\\//<\'
+              \Y  \>                                     
+            />  //\ />\ \>    .;`'`/`;<\   ;/> /> \>/ \\: \>
+           />  //: />  \> \>    o o    /> /> />\>  \\  \>
+          />  //  /> \> \> \>  oO Oo />        \\  \>      
+         />  //  />   `;.;. . (  ..  )  .;`;`     \>  \\  \>
+       />  //: />           \\  \>                             
+      /> // />             \>                          <\ \\ <\'
+      \\ \>                                                      
+     />// />                  /`//\                      <\ \\<\'
+    \\ \>                                                        
+    />///>                   _//\ \/                       <\\\<\'
+   \\\>                                                           
+   />//>                                                     <\\<\'
+  \\>                                                             
+    \\(                                                       )//
+      \\                                                     //
+      '''+ '\x1b[0m')
     user_guesses = 10
     correct_answer = generate_unique_number()
     print(correct_answer)

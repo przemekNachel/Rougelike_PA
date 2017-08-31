@@ -1,6 +1,6 @@
 import os
 import time
-
+import game
 
 def print_from_file(filename):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -21,6 +21,8 @@ def print_from_file_with_input(filename):
 
 def character_creation():
     print_from_file("char_creation.txt")
+    with open('game.sav', 'r') as inf:
+        data = eval(inf.read())
     attack = 10
     defense = 10
     dexterity = 10
@@ -57,7 +59,14 @@ def character_creation():
     1. Dexterity {}:
     2. Attack {}:
     3. Defense: {}""".format(name, remaining_points, dexterity, attack, defense))
-    time.sleep(1)
+    data["hero_name"] = name
+    data["hero_HP"] = 100
+    data["hero_attack"] = attack
+    data["hero_defense"] = defense
+    data["hero_dexterity"] = dexterity
+    print(data)
+    time.sleep(2)
+    return data
 
 
 def play():
@@ -66,9 +75,9 @@ def play():
         try:
             user_play = int(user_play)
             if user_play == 1:
-                character_creation()
+                data = character_creation()
                 print_from_file_with_input("introduction.txt")
-                import game
+                game.game(data)
             elif user_play == 2:
                 pass
             else:

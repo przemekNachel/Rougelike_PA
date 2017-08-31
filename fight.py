@@ -61,6 +61,7 @@ def fight(data, background):
         time.sleep(1)
         data["enemy_message"][0] = ""
 
+
 def game_fight():
 
     background = load_level("battle_screen.txt")

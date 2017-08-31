@@ -84,7 +84,12 @@ def fight_with_guardian(data):
         feedback = compare_user_answer(user_input, correct_answer)
         print(feedback)
         if feedback == ["hot", "hot", "hot"]:
-            print("You won!")
+            print("Guardian is confused with your quick answer, you manage to kill him without any troubles")
+            if [data["current_location"] == 1:
+                print("You found sword and chain shirt, you equip them")
+                inv = data["inventory"]
+                data["sword"][0] = 1:
+                data["shirt"][0] = 1
             break
         user_guesses -= 1
 

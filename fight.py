@@ -69,6 +69,14 @@ def fight(data, background):
         time.sleep(1)
         data["enemy_message"][0] = ""
 
+        if data["hero_HP"][0] > 0 and data["enemy_HP"][0] <= 0:
+            data["hero_exp"][0] += data["enemy_exp"][0]
+            inv = data["inventory"]
+            inv["gold coin"][1] += 10
+            data["hero_message"][0] = ("You gained 10 gold and 20 experience")
+            print_screen(background, data)
+            time.sleep(2)
+
 
 def game_fight(data):
     data["enemy_HP"][0] = 100
@@ -76,5 +84,6 @@ def game_fight(data):
     fight(data, background)
     return data
 
+
 if __name__ == '__game_fight__':
-    game_fight()
+    game_fight(data)

@@ -24,6 +24,7 @@ def get_user_input():
             print("Number should be 3-digit!")
     return list(user_input)
 
+
 def compare_user_answer(guess, correct_answer):
     hints = []
     for i in range(len(guess)):

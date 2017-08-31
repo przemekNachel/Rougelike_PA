@@ -54,6 +54,8 @@ def movement(pressed_key, data, map, covered_map):
     object_at_top = covered_map[data["hero_position"][1]-1][data["hero_position"][0]]
     object_at_bottom = covered_map[data["hero_position"][1]+1][data["hero_position"][0]]
     obstacles = ["#", "^", "░", "▒", "▓"]
+    if data["hero_HP"][0] < 100:
+        data["hero_HP"][0] += 1
     if object_at_top in data["guardians"][data["current_location"]][-1]:
         return 1
     if pressed_key == "a" and object_at_left not in obstacles:
@@ -73,6 +75,71 @@ def movement(pressed_key, data, map, covered_map):
             data["grass_steps_remaining"][1] = 1
 
 
+def print_from_file(filename):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    with open(filename, "r") as file:
+        print_screen = file.readlines()
+        for line in print_screen:
+            print(line, end="")
+
+
+def check_hero_level(data):
+    if data["hero_exp"][0] >= (data["hero_level"][0] * 100):
+        data["hero_exp"][0] -= (data["hero_level"][0] * 100)
+        data["hero_level"][0] += 1
+        data["remaining_points"][0] += 10 
+    else: 
+        pass
+    return data
+
+
+def character_sheet(data):
+    print_from_file("character_screen.txt")
+    attack = data["hero_attack"][0]
+    defense = data["hero_defense"][0]
+    dexterity = data["hero_dexterity"][0]
+    remaining_points = data["remaining_points"][0]
+    name = data["hero_name"][0]
+    while remaining_points > 0:
+        print_from_file("char_creation.txt")
+        print("""
+    Name: {}
+
+    Your statistics:
+    Remaining points: {}
+    1. Dexterity: {}
+    2. Attack   : {}
+    3. Defense  : {} \n\n""".format(name, remaining_points, dexterity, attack, defense))
+        answer = input("Please enter number from one to three to change stat by five points: ")
+        if answer == "1":
+            dexterity += 5
+            remaining_points -= 5
+        elif answer == "2":
+            attack += 5
+            remaining_points -= 5
+        elif answer == "3":
+            defense += 5
+            remaining_points -= 5
+        else:
+            continue
+    print_from_file("char_creation.txt")
+    print("""
+    Name: {}
+
+    Your statistics:
+    Remaining points: {}
+    1. Dexterity {}:
+    2. Attack {}:
+    3. Defense: {}""".format(name, remaining_points, dexterity, attack, defense))
+    data["hero_name"][0] = name
+    data["hero_HP"][0] = 100
+    data["hero_attack"][0] = attack
+    data["hero_defense"][0] = defense
+    data["hero_dexterity"][0] = dexterity
+    data["remaining_points"][0] = remaining_points
+    return data
+
+
 def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
@@ -87,10 +154,14 @@ def game(data):
             break
         if pressed_key == "i":
             inventory.inventory(data)
-            pressed_key = getch()        
+            pressed_key = getch()
+        if pressed_key == "c": 
+            character_sheet(data)
+            pressed_key = getch()   
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
             fight.game_fight(data)
+            check_hero_level(data)
           
  
 if __name__ == '__game__':

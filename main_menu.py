@@ -68,7 +68,6 @@ def character_creation():
     data["hero_defense"][0] = defense
     data["hero_dexterity"][0] = dexterity
     data["remaining_points"][0] = remaining_points
-    print(data)
     time.sleep(2)
     return data
 

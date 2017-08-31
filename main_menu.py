@@ -23,9 +23,9 @@ def character_creation():
     print_from_file("char_creation.txt")
     with open('game.sav', 'r') as inf:
         data = eval(inf.read())
-    attack = 10
-    defense = 10
-    dexterity = 10
+    attack = 100
+    defense = 100
+    dexterity = 100
     remaining_points = 20
     name = input("Please enter name of your character: ")
     while remaining_points > 0:
@@ -59,11 +59,11 @@ def character_creation():
     1. Dexterity {}:
     2. Attack {}:
     3. Defense: {}""".format(name, remaining_points, dexterity, attack, defense))
-    data["hero_name"] = name
-    data["hero_HP"] = 100
-    data["hero_attack"] = attack
-    data["hero_defense"] = defense
-    data["hero_dexterity"] = dexterity
+    data["hero_name"][0] = name
+    data["hero_HP"][0] = 100
+    data["hero_attack"][0] = attack
+    data["hero_defense"][0] = defense
+    data["hero_dexterity"][0] = dexterity
     print(data)
     time.sleep(2)
     return data

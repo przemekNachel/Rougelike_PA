@@ -76,6 +76,7 @@ def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
         covered_map = print_map(map, data)
+        print(data)
         pressed_key = getch()
         guardian_over = movement(pressed_key, data, map, covered_map)
         if guardian_over:

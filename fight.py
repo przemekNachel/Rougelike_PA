@@ -72,8 +72,8 @@ def fight(data, background):
         if data["hero_HP"][0] > 0 and data["enemy_HP"][0] <= 0:
             data["hero_exp"][0] += data["enemy_exp"][0]
             inv = data["inventory"]
-            inv["gold coin"][1] += 10
-            data["hero_message"][0] = ("You gained 10 gold and 20 experience")
+            inv["gold coin"][1] += data["enemy_gold"][0]
+            data["hero_message"][0] = "You gained " + str(data["enemy_gold"][0]) + " gold and " + str(data["enemy_exp"][0]) + " exp"
             print_screen(background, data)
             time.sleep(2)
 

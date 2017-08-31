@@ -82,7 +82,8 @@ def play():
                 print_from_file_with_input("introduction.txt")
                 game.game(data)
             elif user_play == 2:
-                pass
+                print_from_file("mainmenu_ascii.txt")
+                return
             else:
                 continue
         except ValueError:
@@ -114,4 +115,6 @@ def main():
         except ValueError:
             print_from_file("mainmenu_ascii.txt")
 
-main()
+
+if __name__ == "__main__":
+    main()

@@ -4,6 +4,7 @@ import random
 import fight
 import guardian
 import inventory
+import main_menu
 
 
 def getch():
@@ -87,8 +88,8 @@ def check_hero_level(data):
     if data["hero_exp"][0] >= (data["hero_level"][0] * 100):
         data["hero_exp"][0] -= (data["hero_level"][0] * 100)
         data["hero_level"][0] += 1
-        data["remaining_points"][0] += 10 
-    else: 
+        data["remaining_points"][0] += 10
+    else:
         pass
     return data
 
@@ -100,16 +101,23 @@ def character_sheet(data):
     dexterity = data["hero_dexterity"][0]
     remaining_points = data["remaining_points"][0]
     name = data["hero_name"][0]
+    exp = data["hero_exp"][0]
+    lvl = data["hero_level"][0]
+    remaining_exp = (lvl * 100) - exp
     while remaining_points > 0:
         print_from_file("char_creation.txt")
         print("""
     Name: {}
 
     Your statistics:
+    Level: {}
+    Exp  : {}
+    Expierence to next level: {}
+
     Remaining points: {}
     1. Dexterity: {}
     2. Attack   : {}
-    3. Defense  : {} \n\n""".format(name, remaining_points, dexterity, attack, defense))
+    3. Defense  : {} \n\n""".format(name, lvl, exp, remaining_exp, remaining_points, dexterity, attack, defense))
         answer = input("Please enter number from one to three to change stat by five points: ")
         if answer == "1":
             dexterity += 5
@@ -122,15 +130,21 @@ def character_sheet(data):
             remaining_points -= 5
         else:
             continue
+
     print_from_file("char_creation.txt")
     print("""
     Name: {}
 
     Your statistics:
+    Level: {}
+    Exp  : {}
+    Expierence to next level: {}
+
     Remaining points: {}
-    1. Dexterity {}:
-    2. Attack {}:
-    3. Defense: {}""".format(name, remaining_points, dexterity, attack, defense))
+    1. Dexterity: {}
+    2. Attack   : {}
+    3. Defense  : {} \n\n""".format(name, lvl, exp, remaining_exp, remaining_points, dexterity, attack, defense))
+
     data["hero_name"][0] = name
     data["hero_HP"][0] = 100
     data["hero_attack"][0] = attack
@@ -138,6 +152,23 @@ def character_sheet(data):
     data["hero_dexterity"][0] = dexterity
     data["remaining_points"][0] = remaining_points
     return data
+
+
+def check_enemy(data):
+    enemieslvl1 = data["enemies1"]
+    enemieslvl2 = data["enemies2"]
+    if data["current_location"] == 1:
+        current_enemy = random.choice(enemieslvl1)
+    else:
+        current_enemy = random.choice(enemieslvl2)
+    print(current_enemy)
+    data["enemy_name"][0] = current_enemy[0]
+    data["enemy_HP"][0] = current_enemy[1]
+    data["enemy_attack"][0] = current_enemy[2]
+    data["enemy_defense"][0] = current_enemy[3]
+    data["enemy_dexterity"][0] = current_enemy[4]
+    data["enemy_exp"][0] = current_enemy[5]
+    data["enemy_gold"][0] = current_enemy[6]
 
 
 def game(data):
@@ -152,23 +183,20 @@ def game(data):
             data["guardians"][0] = 0
             guardian.fight_with_guardian(data)
         if pressed_key == "q":
-            break
+            main_menu.main()
         if pressed_key == "i":
             inventory.inventory(data)
             pressed_key = getch()
-        if pressed_key == "c": 
+        if pressed_key == "c":
             character_sheet(data)
-            pressed_key = getch()   
+            pressed_key = getch()
         print(data["hero_position"])
-        if (data["hero_position"] == [34,14] or data["hero_position"] == [33,15]) and data["current_location"] == 1:
-            data["current_location"] +=  1
+        if (data["hero_position"] == [34, 14] or data["hero_position"] == [33, 15]) and data["current_location"] == 1:
+            data["current_location"] += 1
             data["guardians"][0] = 1
-            game(data)     
+            game(data)
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
+            check_enemy(data)
             fight.game_fight(data)
             check_hero_level(data)
-          
- 
-if __name__ == '__game__':
-    game(data)

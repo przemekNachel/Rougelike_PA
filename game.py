@@ -81,13 +81,19 @@ def game(data):
         pressed_key = getch()
         guardian_over = movement(pressed_key, data, map, covered_map)
         if guardian_over:
+            guardian_over = 0
             data["guardians"][0] = 0
-            guardian.fight_with_guardian([data["current_location"]])
+            guardian.fight_with_guardian(data)
         if pressed_key == "q":
             break
         if pressed_key == "i":
             inventory.inventory(data)
-            pressed_key = getch()        
+            pressed_key = getch()
+        print(data["hero_position"])
+        if (data["hero_position"] == [34,14] or data["hero_position"] == [33,15]) and data["current_location"] == 1:
+            data["current_location"] +=  1
+            data["guardians"][0] = 1
+            game(data)     
         if data["grass_steps_remaining"][1]:
             data["grass_steps_remaining"][1] = 0
             fight.game_fight(data)

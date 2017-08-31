@@ -9,17 +9,12 @@
 "`-')  ,.", 
 " ( `-'/^`", 
 "_-`_-)"], 
-<<<<<<< HEAD
-[]],
-"remaining_points": [20],
-"hero_level":[1],
-=======
 [20, 60,
 "   /^\ ___ /^\ ", 
 "  //^\(o o)/^\\ ", 
 "_/'<^~``~''~^>`\_"]],
+"hero_level":[1],
 "remaining_points": [20],
->>>>>>> e41bce02ffb1ee3cdfe9f3ef77f77c97d0007e6e
 "hero_name": ["Ja", 3, 18],
 "hero_HP": [100, 4, 18],
 "hero_attack": [100, 5, 18],
@@ -34,13 +29,8 @@
 "enemy_dexterity": [15, 7, 150],
 "enemy_exp": [20, 8, 150],
 "enemy_message": ["", 6, 100],
-<<<<<<< HEAD
 "except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining", "inventory", "remaining_points", "hero_level"],
 "inventory": {'shirt': [1, 1, "cloth", 70], 'sword': [0, 1, "weapon", 100], 'gold coin': [1, 0, "gold", 100]}
-=======
-"except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining", "inventory", "remaining_points"],
-"inventory": {'shirt': [1, 1, "cloth", 70], 'sword': [0, 1, "weapon", 100], 'gold coin': [1, 35, "gold", 100]}
->>>>>>> e41bce02ffb1ee3cdfe9f3ef77f77c97d0007e6e
 }
 
 

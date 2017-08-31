@@ -25,7 +25,7 @@ def inventory(data):
     w = length_of_longest(inv, 3)
     it = length_of_longest(inv, 2)
     bar = (100 * "-")
-    print("Inventory:\n"+"Item Name".rjust(l, " ") + "Count".rjust(10, " ") + "Weight".rjust(w + 4, " ") 
+    print("Inventory:\n"+"Item Name".rjust(l, " ") + "Count".rjust(10, " ") + "Weight".rjust(w + 4, " ")
           + "Item Type".rjust(it + 4, " "), "\n"+bar)
     for i in inv:
         if inv[i][0] == 0:
@@ -36,4 +36,3 @@ def inventory(data):
             weight = str(inv[i][3])
             item_type = str(inv[i][2])
             print("{} {} {} {}".format(item.rjust(l, " "), count.rjust(9, " "), weight.rjust(w + 3, " "), item_type.rjust(it + 3, " ")))
-

@@ -2,6 +2,7 @@ import os
 import time
 import game
 
+
 def print_from_file(filename):
     os.system('cls' if os.name == 'nt' else 'clear')
     with open(filename, "r") as file:

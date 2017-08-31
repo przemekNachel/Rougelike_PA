@@ -31,7 +31,7 @@
 "enemy_gold":[9],
 "enemy_message": ["", 6, 100],
 "except": ["except", "enemy_exp", "enemy_loot", "guardians", "current_location", "levels", "hero_position", "grass_steps_remaining", "inventory", "remaining_points", "hero_level", "enemy_gold", "enemies1", "enemies2", "lvlmessage", "winloose", "starttime", "totaltime"],
-"inventory": {'shirt': [1, 1, "cloth", 70], 'sword': [1, 1, "weapon", 100], 'gold coin': [1, 0, "gold", 100]},
+"inventory": {'chain shirt': [0, 1, "cloth", 70], 'sword': [0, 1, "weapon", 100], 'gold coin': [1, 0, "gold", 100]},
 "enemies1": [["Orc",100,30,30,15,50,25], ["Wolf",100,20,15,20,25,10], ["Scavenger",100,10,5,5,10,5]],
 "enemies2": [["Orc Warrior",200,50,50,40,100,50], ["Skeleton",175,40,40,30,75,40], ["Troll",500,100,40,30,250,100]],
 "lvlmessage":0,

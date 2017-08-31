@@ -89,8 +89,8 @@ def check_hero_level(data):
         data["hero_exp"][0] -= (data["hero_level"][0] * 100)
         data["hero_level"][0] += 1
         data["lvlmessage"] = 1
-        data["remaining_points"][0] += 10 
-    else: 
+        data["remaining_points"][0] += 10
+    else:
         pass
     return data
 
@@ -104,21 +104,23 @@ def character_sheet(data):
     name = data["hero_name"][0]
     exp = data["hero_exp"][0]
     lvl = data["hero_level"][0]
+    hp = data["hero_HP"][0]
     remaining_exp = (lvl * 100) - exp
     while remaining_points > 0:
-        print_from_file("char_creation.txt")
+        print_from_file("character_screen.txt")
         print("""
     Name: {}
 
     Your statistics:
     Level: {}
+    HP   : {}
     Exp  : {}
     Expierence to next level: {}
 
     Remaining points: {}
     1. Dexterity: {}
     2. Attack   : {}
-    3. Defense  : {} \n\n""".format(name, lvl, exp, remaining_exp, remaining_points, dexterity, attack, defense))
+    3. Defense  : {} \n\n""".format(name, lvl, hp, exp, remaining_exp, remaining_points, dexterity, attack, defense))
         answer = input("Please enter number from one to three to change stat by five points: ")
         if answer == "1":
             dexterity += 5
@@ -132,19 +134,20 @@ def character_sheet(data):
         else:
             continue
 
-    print_from_file("char_creation.txt")
+    print_from_file("character_screen.txt")
     print("""
     Name: {}
 
     Your statistics:
     Level: {}
+    HP   : {}
     Exp  : {}
     Expierence to next level: {}
 
     Remaining points: {}
     1. Dexterity: {}
     2. Attack   : {}
-    3. Defense  : {} \n\n""".format(name, lvl, exp, remaining_exp, remaining_points, dexterity, attack, defense))
+    3. Defense  : {} \n\n""".format(name, lvl, hp, exp, remaining_exp, remaining_points, dexterity, attack, defense))
 
     data["hero_name"][0] = name
     data["hero_HP"][0] = 100
@@ -203,7 +206,4 @@ def game(data):
             data["grass_steps_remaining"][1] = 0
             check_enemy(data)
             fight.game_fight(data)
-            if data["hero_HP"][0] <= 0:
-                data["totaltime"] = (time.time() - data["starttime"])
-
             check_hero_level(data)

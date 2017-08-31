@@ -18,3 +18,21 @@
  |_||_\___/\_/\_/   \__\___/ | .__/_\__,_|\_, (_)
                              |_|          |__/   
 
+In Game Controls:
+W - Going up
+S - Going down
+A - Going left
+D - Going right
+C - Character screen
+I - Inventory screen
+Q - To end game and return to main menu
+
+
+Here are some hints:
+You are a classic RPG character and you can advance by kiling enemies.
+They also have gold, but watchout on second level they are considerably stronger.
+To find enemy you need to just walk on grass and after some steps you will start a fight.
+To regenerate your health just walk through map, HP regenerates with walking.
+To finish first level just defeat guardian and walk through castle gate.
+To finish game just defeat main boss on second level.
+

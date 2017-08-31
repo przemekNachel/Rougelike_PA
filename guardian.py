@@ -1,11 +1,10 @@
 import os
-import game
 import random
 
 
 def generate_unique_number():
 
-    unique_number_list = [0,1,2,3,4,5,6,7,8,9]
+    unique_number_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     guess_numbers = []
     while len(guess_numbers) < 3:
@@ -15,6 +14,7 @@ def generate_unique_number():
         unique_number_list.remove(unique_number)
 
     return guess_numbers
+
 
 def get_user_input():
     while True:
@@ -40,7 +40,7 @@ def compare_user_answer(guess, correct_answer):
 
 def fight_with_guardian(data):
     os.system('cls' if os.name == 'nt' else 'clear')
-    if data["current_location"] == 1:    
+    if data["current_location"] == 1:
         print('\x1b[1;33;40m' + '''
             |\___/|
             (,\  /,)\'
@@ -75,7 +75,7 @@ def fight_with_guardian(data):
   \\>                                                             
     \\(                                                       )//
       \\                                                     //
-      '''+ '\x1b[0m')
+      ''' + '\x1b[0m')
     user_guesses = 10
     correct_answer = generate_unique_number()
     print(correct_answer)
@@ -85,11 +85,14 @@ def fight_with_guardian(data):
         print(feedback)
         if feedback == ["hot", "hot", "hot"]:
             print("Guardian is confused with your quick answer, you manage to kill him without any troubles")
-            if [data["current_location"] == 1:
+            if data["current_location"] == 1:
                 print("You found sword and chain shirt, you equip them")
                 inv = data["inventory"]
-                data["sword"][0] = 1:
-                data["shirt"][0] = 1
+                inv["sword"][0] = 1
+                inv["chain shirt"][0] = 1
+                data["hero_attack"][0] += 20
+                data["hero_defense"][0] += 10
+                print("With sword and armor You gained +20 Attack and + 10 defense")
+                input("Press enter to return")
             break
         user_guesses -= 1
-

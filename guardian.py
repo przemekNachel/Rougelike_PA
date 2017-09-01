@@ -106,6 +106,9 @@ def fight_with_guardian(data):
                         print(line, end="")
                 print("Guardian is confused with your quick answer, you manage to kill him without any troubles")
                 print("You get out from that damned dome, and go whenever you want to...")
+                inv = data["inventory"]
+                score = data["hero_level"][0] * inv["gold coin"][1]
+                print("You gained", score, "points")
                 print("Thanks for playing!")
                 input("Press enter to return")
                 main_menu.main()
@@ -119,5 +122,8 @@ def fight_with_guardian(data):
                 for line in print_screen:
                     print(line, end="")
             print("Guardian killed you for wrong answer!")
+            inv = data["inventory"]
+            score = data["hero_level"][0] * inv["gold coin"][1]
+            print("You gained", score, "points")
             input("Press enter to return")
             main_menu.main()

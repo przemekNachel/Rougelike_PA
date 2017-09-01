@@ -183,6 +183,9 @@ def check_if_alive(data):
             for line in print_screen:
                 print(line, end="")
         print("Monster killed you!")
+        inv = data["inventory"]
+        score = int(data["hero_level"]) * int(inv["gold coin"][1])
+        print("You gained", score, "points")
         input("Press enter to return")
         main_menu.main()
 

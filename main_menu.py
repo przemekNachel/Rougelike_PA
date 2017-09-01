@@ -109,7 +109,7 @@ def main():
                 print_from_file("play.txt")
                 play()
             elif user_input == 2:
-                print_from_file("highscore.txt")
+                print_from_file_with_input("highscore.txt")
                 print_from_file("mainmenu_ascii.txt")
             elif user_input == 3:
                 print_from_file_with_input("how_to_play.txt")

@@ -175,6 +175,18 @@ def check_enemy(data):
     data["enemy_gold"][0] = current_enemy[6]
 
 
+def check_if_alive(data):
+    if data["hero_HP"][0] <= 0:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        with open("loose.txt", "r") as file:
+            print_screen = file.readlines()
+            for line in print_screen:
+                print(line, end="")
+        print("Monster killed you!")
+        input("Press enter to return")
+        main_menu.main()
+
+
 def game(data):
     map = load_level(data["levels"][data["current_location"]])
     while True:
@@ -206,4 +218,5 @@ def game(data):
             data["grass_steps_remaining"][1] = 0
             check_enemy(data)
             fight.game_fight(data)
+            check_if_alive(data)
             check_hero_level(data)

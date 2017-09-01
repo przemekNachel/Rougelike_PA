@@ -1,5 +1,6 @@
 import os
 import random
+import main_menu
 
 
 def generate_unique_number():
@@ -83,8 +84,10 @@ def fight_with_guardian(data):
         user_input = get_user_input()
         feedback = compare_user_answer(user_input, correct_answer)
         print(feedback)
+
         if feedback == ["hot", "hot", "hot"]:
             print("Guardian is confused with your quick answer, you manage to kill him without any troubles")
+            
             if data["current_location"] == 1:
                 print("You found sword and chain shirt, you equip them")
                 inv = data["inventory"]
@@ -94,5 +97,27 @@ def fight_with_guardian(data):
                 data["hero_defense"][0] += 10
                 print("With sword and armor You gained +20 Attack and + 10 defense")
                 input("Press enter to return")
+
+            elif data["current_location"] == 2:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                with open("win.txt", "r") as file:
+                    print_screen = file.readlines()
+                    for line in print_screen:
+                        print(line, end="")
+                print("Guardian is confused with your quick answer, you manage to kill him without any troubles")
+                print("You get out from that damned dome, and go whenever you want to...")
+                print("Thanks for playing!")
+                input("Press enter to return")
+                main_menu.main()
             break
         user_guesses -= 1
+
+        if user_guesses <= 0:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            with open("loose.txt", "r") as file:
+                print_screen = file.readlines()
+                for line in print_screen:
+                    print(line, end="")
+            print("Guardian killed you for wrong answer!")
+            input("Press enter to return")
+            main_menu.main()

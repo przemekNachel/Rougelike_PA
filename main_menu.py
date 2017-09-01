@@ -23,6 +23,14 @@ def print_from_file_with_input(filename):
     input("Press enter to return")
 
 
+def length_of_longest(inventory, counter):
+    longest = "a"
+    for it in inventory:
+        if len(it) > len(longest):
+            longest = it
+    return len(longest)
+
+
 def character_creation():
     print_from_file("char_creation.txt")
     with open('game.sav', 'r') as inf:
@@ -102,7 +110,6 @@ def main():
                 play()
             elif user_input == 2:
                 print_from_file("highscore.txt")
-                print_from_file_with_input("highscore1.txt")
                 print_from_file("mainmenu_ascii.txt")
             elif user_input == 3:
                 print_from_file_with_input("how_to_play.txt")

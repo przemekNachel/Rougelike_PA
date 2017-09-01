@@ -35,4 +35,6 @@ To find enemy you need to just walk on grass and after some steps you will start
 To regenerate your health just walk through map, HP regenerates with walking.
 To finish first level just defeat guardian and walk through castle gate.
 To finish game just defeat main boss on second level.
+Your score is counted in that way: score = lvl * gold
+Remember dexterity is very importatnt in counting chance to hits
 

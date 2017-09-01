@@ -184,8 +184,17 @@ def check_if_alive(data):
                 print(line, end="")
         print("Monster killed you!")
         inv = data["inventory"]
-        score = int(data["hero_level"]) * int(inv["gold coin"][1])
+        score = data["hero_level"][0] * inv["gold coin"][1]
         print("You gained", score, "points")
+        hisghscore = [data["hero_name"][0], score]
+        try:
+            with open('highscore1', 'a') as export:
+                for i in hisghscore:
+                    i = str(i)
+                    i += "\t"
+                    export.writelines(i)
+        except FileNotFoundError:
+            print("uuu nie zapisze nie ma pliku!")
         input("Press enter to return")
         main_menu.main()
 

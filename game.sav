@@ -1,5 +1,5 @@
 {
-"levels": ["", "1lvl.txt", "2lvl.txt"],
+"levels": ["", "levels/1lvl.txt", "levels/2lvl.txt"],
 "current_location":1,
 "hero_position":[12,36],
 "grass_steps_remaining":[15,0],

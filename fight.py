@@ -79,7 +79,7 @@ def fight(data, background):
 
 
 def game_fight(data):
-    background = load_level("battle_screen.txt")
+    background = load_level("pages/battle_screen.txt")
     fight(data, background)
     return data
 

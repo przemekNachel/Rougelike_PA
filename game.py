@@ -96,7 +96,7 @@ def check_hero_level(data):
 
 
 def character_sheet(data):
-    print_from_file("character_screen.txt")
+    print_from_file("pages/character_screen.txt")
     attack = data["hero_attack"][0]
     defense = data["hero_defense"][0]
     dexterity = data["hero_dexterity"][0]
@@ -107,7 +107,7 @@ def character_sheet(data):
     hp = data["hero_HP"][0]
     remaining_exp = (lvl * 100) - exp
     while remaining_points > 0:
-        print_from_file("character_screen.txt")
+        print_from_file("pages/character_screen.txt")
         print("""
     Name: {}
 
@@ -134,7 +134,7 @@ def character_sheet(data):
         else:
             continue
 
-    print_from_file("character_screen.txt")
+    print_from_file("pages/character_screen.txt")
     print("""
     Name: {}
 
@@ -178,7 +178,7 @@ def check_enemy(data):
 def check_if_alive(data):
     if data["hero_HP"][0] <= 0:
         os.system('cls' if os.name == 'nt' else 'clear')
-        with open("loose.txt", "r") as file:
+        with open("pages/loose.txt", "r") as file:
             print_screen = file.readlines()
             for line in print_screen:
                 print(line, end="")

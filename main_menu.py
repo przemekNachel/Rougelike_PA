@@ -32,7 +32,7 @@ def length_of_longest(inventory, counter):
 
 
 def character_creation():
-    print_from_file("char_creation.txt")
+    print_from_file("pages/char_creation.txt")
     with open('game.sav', 'r') as inf:
         data = eval(inf.read())
     attack = data["hero_attack"][0]
@@ -41,7 +41,7 @@ def character_creation():
     remaining_points = data["remaining_points"][0]
     name = input("Please enter name of your character: ")
     while remaining_points > 0:
-        print_from_file("char_creation.txt")
+        print_from_file("pages/char_creation.txt")
         print("""
     Name: {}
 
@@ -62,7 +62,7 @@ def character_creation():
             remaining_points -= 5
         else:
             continue
-    print_from_file("char_creation.txt")
+    print_from_file("pages/char_creation.txt")
     print("""
     Name: {}
 
@@ -88,41 +88,41 @@ def play():
             user_play = int(user_play)
             if user_play == 1:
                 data = character_creation()
-                print_from_file_with_input("introduction.txt")
+                print_from_file_with_input("pages/introduction.txt")
                 data["starttime"] = time.time()
                 game.game(data)
             elif user_play == 2:
-                print_from_file("mainmenu_ascii.txt")
+                print_from_file("pages/mainmenu_ascii.txt")
                 return
             else:
                 continue
         except ValueError:
-            print_from_file("play.txt")
+            print_from_file("pages/play.txt")
 
 
 def main():
-    print_from_file("mainmenu_ascii.txt")
+    print_from_file("pages/mainmenu_ascii.txt")
     while True:
         try:
             user_input = int(input())
             if user_input == 1:
-                print_from_file("play.txt")
+                print_from_file("pages/play.txt")
                 play()
             elif user_input == 2:
-                print_from_file_with_input("highscore.txt")
-                print_from_file("mainmenu_ascii.txt")
+                print_from_file_with_input("pages/highscore.txt")
+                print_from_file("pages/mainmenu_ascii.txt")
             elif user_input == 3:
-                print_from_file_with_input("how_to_play.txt")
-                print_from_file("mainmenu_ascii.txt")
+                print_from_file_with_input("pages/how_to_play.txt")
+                print_from_file("pages/mainmenu_ascii.txt")
             elif user_input == 4:
-                print_from_file_with_input("about_us_ascii.txt")
-                print_from_file("mainmenu_ascii.txt")
+                print_from_file_with_input("pages/about_us_ascii.txt")
+                print_from_file("pages/mainmenu_ascii.txt")
             elif user_input == 5:
                 quit()
             else:
                 continue
         except ValueError:
-            print_from_file("mainmenu_ascii.txt")
+            print_from_file("pages/mainmenu_ascii.txt")
 
 
 if __name__ == "__main__":

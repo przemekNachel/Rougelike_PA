@@ -100,7 +100,7 @@ def fight_with_guardian(data):
 
             elif data["current_location"] == 2:
                 os.system('cls' if os.name == 'nt' else 'clear')
-                with open("win.txt", "r") as file:
+                with open("pages/win.txt", "r") as file:
                     print_screen = file.readlines()
                     for line in print_screen:
                         print(line, end="")
@@ -126,7 +126,7 @@ def fight_with_guardian(data):
 
         if user_guesses <= 0:
             os.system('cls' if os.name == 'nt' else 'clear')
-            with open("loose.txt", "r") as file:
+            with open("pages/loose.txt", "r") as file:
                 print_screen = file.readlines()
                 for line in print_screen:
                     print(line, end="")
